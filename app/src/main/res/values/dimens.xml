@@ -1,0 +1,26 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="offset_title_left">5dp</dimen>
+    <dimen name="width_title_leftImg">30dp</dimen>
+    <dimen name="title_text_size">15sp</dimen>
+
+
+    <dimen name="general_margin">16dp</dimen>
+    <dimen name="signin_text_size">15sp</dimen>
+
+    <dimen name="point_width">5dp</dimen>
+    <dimen name="point_margin">8dp</dimen>
+    <dimen name="emoji_normal">32dp</dimen>
+    <dimen name="emoji_switch_button_width">60dp</dimen>
+
+    <dimen name="height_top_bar">45dp</dimen>
+
+    <dimen name="tweets_list_item_button_size">16dp</dimen>
+    <!-- publish btns size-->
+    <dimen name="btns_size">32dp</dimen>
+
+    <dimen name="layout_x_128">128px</dimen>
+    <dimen name="layout_y_40">40px</dimen>
+</resources>

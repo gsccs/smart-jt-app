@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gsccs.smart">
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许程序改变网络连接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <application
+        android:name=".SmartApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+        <!-- 高德地图key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="e08a4e63f11dc76fcaaf014058caa4d2" />
+
+        <!-- 科大讯飞key -->
+        <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="58256cbc" />
+
+        <!-- 定位Service -->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <service android:name=".service.WeatherService" />
+        <service android:name=".service.BusLineService" />
+        <service android:name=".service.BaseLocationService" />
+        <service
+            android:name=".service.LocationService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="LocationService" />
+            </intent-filter>
+        </service>
+
+        <!--  -->
+        <service
+            android:name=".service.PoiSearchService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="PoiService" />
+            </intent-filter>
+        </service>
+
+        <!-- 更新下载 -->
+        <service
+            android:name=".service.DownloadService"
+            android:exported="true" />
+
+        <activity
+            android:name=".activity.SignInUpActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".activity.BusMainActivity">
+            <intent-filter>
+                <action android:name="BusLine" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.BusMapActivity">
+            <intent-filter>
+                <action android:name="IndexMap" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.BusSearchActivity"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="search" />
+            </intent-filter>
+        </activity>
+
+        <!-- <receiver android:name=".activities.BusMapActivity$Receiver"> -->
+        <!-- <intent-filter android:priority="1000"> -->
+        <!-- <action android:name="com.locationreciever"/> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+
+        <activity android:name=".test.Main2Activity">
+            <intent-filter>
+                <action android:name="text" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.RoundActivity" />
+        <activity android:name=".activity.BusLineShowActivity" />
+        <activity android:name=".activity.BusRouteActivity" />
+        <activity
+            android:name=".activity.BusRouteInputActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.BusPathActivity" />
+        <activity android:name=".activity.SelectMapPointActivity" />
+        <activity android:name=".activity.SameStationActivity" />
+        <activity android:name=".activity.BusRouteDetailActivity" />
+        <activity android:name=".activity.BusPathInMapActivity" />
+        <activity android:name=".activity.RegistPageActivity" />
+        <!-- 交通状况、指数 -->
+        <activity android:name=".activity.TrafficMapActivity" />
+        <activity android:name=".activity.TrafficDataActivity" />
+
+        <!-- 停车 -->
+        <activity android:name=".activity.ParkMapActivity" />
+        <activity android:name=".activity.ParkRouteDetailActivity" />
+
+        <!-- 语音 -->
+        <activity android:name=".activity.NoticeActivity" />
+        <activity android:name=".speech.setting.TtsSettings" />
+
+        <!-- 随手拍 -->
+        <activity android:name=".activity.TweetActivity" />
+        <activity android:name=".activity.TweetFormActivity" />
+        <activity android:name=".activity.TweetDetailActivity" />
+
+        <!-- 新闻详情 -->
+        <activity
+            android:name=".activity.ArticleActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <!-- 生活服务 -->
+        <activity android:name=".activity.AssistActivity" />
+        <activity android:name=".activity.DemandActivity" />
+        <activity
+            android:name=".activity.DemandDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".activity.DemandFormActivity" />
+        <activity android:name=".activity.LostFoundActivity" />
+        <activity
+            android:name=".activity.LostFoundDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".activity.LostFoundFormActivity" />
+        <activity android:name=".activity.WashcarActivity" />
+        <activity android:name=".activity.DomesticActivity" />
+        <activity android:name=".activity.YellowPageActivity" />
+
+        <!-- 我的 -->
+        <activity
+            android:name=".activity.MineActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".activity.CollectActivity" />
+        <activity android:name=".activity.HistoryActivity" />
+        <activity android:name=".activity.InfoActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity
+            android:name=".activity.MinePwdActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <!-- 公共模块 -->
+        <activity android:name=".photoCrop.CropImageActivity" />
+        <activity android:name=".activity.VedioActivity"></activity>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+            App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>

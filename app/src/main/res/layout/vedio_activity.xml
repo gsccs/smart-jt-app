@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--Toolbar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_top_bar"
+        android:orientation="horizontal">
+        <include layout="@layout/header"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        >
+        <com.amap.api.maps.MapView
+            android:id="@+id/traffic_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/strategy_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/darkgrey"
+            android:clickable="true"
+            android:src="@drawable/icon_location" />
+
+        <ImageView
+            android:id="@+id/traffic_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/darkgrey"
+            android:clickable="true"
+            android:src="@drawable/map_traffic_hl_white" />
+
+    </RelativeLayout>
+
+    <!-- 路况视频-->
+    <LinearLayout
+        android:id="@+id/traffic_vedio_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/traffic_vedios"
+            />
+        <ImageView
+            android:id="@+id/traffic_vedio_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/icon_up"
+            />
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent">
+                <GridView
+                    android:id="@+id/camera_grid_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:numColumns="auto_fit"
+                    android:stretchMode="spacingWidthUniform" >
+                </GridView>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <SurfaceView
+                android:id="@+id/sfv_show" android:layout_width="match_parent" android:layout_height="300dp" />
+            <Button
+                android:id="@+id/btn_start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开始" />
+            <Button
+                android:id="@+id/btn_pause" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂停 " />
+            <Button
+                android:id="@+id/btn_stop" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="终止" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
+
+

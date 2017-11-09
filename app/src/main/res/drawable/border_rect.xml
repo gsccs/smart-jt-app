@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 矩形边框-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <solid android:color="#ffffff" />
+
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/font_black_6" />
+
+   <!-- <corners
+        android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        />-->
+
+</shape>
